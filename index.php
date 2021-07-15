@@ -15,9 +15,9 @@
                 <nav class="col-sm-3 pt-3">
                     <a href="index.php" type="button" class="btn btn-outline-secondary w-100">Home</a>
                     <?php 
-                        if(!empty($_COOKIE['info'])) {                    //Si SESSION n'est pas vide, afficher la nav
+                        if(!empty($_COOKIE['info'])) {                      //Si SESSION n'est pas vide, afficher la nav
                             include 'includes/ul.inc.html';
-                            $table = unserialize($_COOKIE['info']);
+                            $table = unserialize($_COOKIE['info']);         //Retour au bon format pour $table
                         } else if (isset($_SESSION['table'])) {
                             include 'includes/ul.inc.html';
                             $table= $_SESSION['table'];
@@ -96,9 +96,9 @@
                         } else {?>
                             <a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
                             <?php
-                            if(!empty($_COOKIE['info'])){
-                                var_dump($_COOKIE['info']);
-                            }
+                            // if(!empty($_COOKIE['info'])){
+                            //     var_dump($_COOKIE['info']);
+                            // }
                         }
                     ?>
                 </section>
