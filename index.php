@@ -26,6 +26,19 @@
                             'size'=>$_POST['size'],
                             'situation'=>$_POST['situation']
                             ];
+                            if (empty($_SESSION['table']['first_name'])){       //Au cas où il manque des infos
+                                $_SESSION['table']['first_name']='Prénom';
+                            }
+                            if (empty($_SESSION['table']['last_name'])){
+                                $_SESSION['table']['last_name']='Nom';
+                            }
+                            if (empty($_SESSION['table']['age'])){
+                                $_SESSION['table']['age']='18';
+                            }
+                            if (empty($_SESSION['table']['size'])){
+                                $_SESSION['table']['size']=1.6;
+                            }
+                            // print_r($_SESSION);
                             echo '<h2>Données sauvegardées.</h2>';
                         } else if(isset($_GET['add'])) {
                             include 'includes/form.inc.html';      
