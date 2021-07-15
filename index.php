@@ -33,7 +33,7 @@
                                 $_SESSION['table']['last_name']='Nom';
                             }
                             if (empty($_SESSION['table']['age'])){
-                                $_SESSION['table']['age']='18';
+                                $_SESSION['table']['age']=18;
                             }
                             if (empty($_SESSION['table']['size'])){
                                 $_SESSION['table']['size']=1.6;
