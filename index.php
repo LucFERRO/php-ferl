@@ -92,6 +92,7 @@
                             readTable($table);
                         } else if(isset($_GET['del'])) {
                         session_destroy();
+                        setcookie('info', null, -1, '/');           //Destroy cookie
                         echo '<h2>Les données ont bien été supprimées.</h2>';
                         } else {?>
                             <a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
