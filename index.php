@@ -1,5 +1,9 @@
 <?php
     session_start();
+    // if(empty($_COOKIE['info'])){
+    //     setcookie('info', 'test', time() + 300);
+    // }
+    // var_dump($_COOKIE['info']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +15,13 @@
                 <nav class="col-sm-3 pt-3">
                     <a href="index.php" type="button" class="btn btn-outline-secondary w-100">Home</a>
                     <?php 
-                        if(isset($_SESSION['table'])) {                    //Si SESSION n'est pas vide, afficher la nav
+                        if(!empty($_COOKIE['info'])) {                    //Si SESSION n'est pas vide, afficher la nav
                             include 'includes/ul.inc.html';
-                            $table=$_SESSION['table'];
-                            // print_r($_SESSION);
-                        } else {}
+                            $table = unserialize($_COOKIE['info']);
+                        } else if (isset($_SESSION['table'])) {
+                            include 'includes/ul.inc.html';
+                            $table= $_SESSION['table'];
+                        }
                     ?>
                 </nav>
                 <section class="col-sm-9 pt-3 pb-2 pr-5">     
@@ -40,6 +46,7 @@
                             if (empty($_SESSION['table']['size'])){
                                 $_SESSION['table']['size']=1.6;
                             }
+                            setcookie('info', serialize($_SESSION['table']), time() + 300);
                             // print_r($_SESSION);
                             echo '<h2>Données sauvegardées.</h2>';
                         } else if(isset($_GET['add'])) {
@@ -89,7 +96,10 @@
                         } else {?>
                             <a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
                             <?php
+                            if(!empty($_COOKIE['info'])){
+                                var_dump($_COOKIE['info']);
                             }
+                        }
                     ?>
                 </section>
             </div>
