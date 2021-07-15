@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <?php include 'includes/head.inc.html' ?>
@@ -8,7 +11,6 @@
                 <nav class="col-sm-3 pt-3">
                     <a href="index.php" type="button" class="btn btn-outline-secondary w-100">Home</a>
                     <?php 
-                        session_start();
                         if(isset($_SESSION['table'])) {                    //Si SESSION n'est pas vide, afficher la nav
                             include 'includes/ul.inc.html';
                             $table=$_SESSION['table'];
