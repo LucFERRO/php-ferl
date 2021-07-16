@@ -1,7 +1,7 @@
 <?php
     session_start();
-    // if(empty($_COOKIE['info'])){
-    //     setcookie('info', 'test', time() + 300);
+    // if(empty($_COOKIE['info'])){                                              // Définition cookie en début de code pour la première visite?
+    //     setcookie('info', 'test', time() + 300); 
     // }
     // var_dump($_COOKIE['info']);
 ?>
@@ -15,9 +15,9 @@
                 <nav class="col-sm-3 pt-3">
                     <a href="index.php" type="button" class="btn btn-outline-secondary w-100">Home</a>
                     <?php 
-                        if(!empty($_COOKIE['info'])) {                      //Si SESSION n'est pas vide, afficher la nav
+                        if(!empty($_COOKIE['info'])) {                          //Si SESSION n'est pas vide, afficher la nav
                             include 'includes/ul.inc.html';
-                            $table = unserialize($_COOKIE['info']);         //Retour au bon format pour $table
+                            $table = unserialize($_COOKIE['info']);             //Retour au bon format pour $table
                         } else if (isset($_SESSION['table'])) {
                             include 'includes/ul.inc.html';
                             $table= $_SESSION['table'];
@@ -55,7 +55,7 @@
                             echo "<h2>Débogage</h2><br>";
                             echo "<p>===> Lecture du tableau à l'aide de la fonction print_r()</p>";
                             echo'<pre>';
-                            print_r($table);              // ou   ~~~~pas exactement pareil    print nl2br(print_r($table, true));          SANS LES BALISES <pre>
+                            print_r($table);                                     // ou   ~~~~pas exactement pareil    print nl2br(print_r($table, true));          SANS LES BALISES <pre>
                             echo'</pre>';
                         } else if(isset($_GET['concatenation'])) {
                             echo "<h2>Concaténation</h2><br>";
@@ -92,14 +92,11 @@
                             readTable($table);
                         } else if(isset($_GET['del'])) {
                         session_destroy();
-                        setcookie('info', null, -1, '/');           //Destroy cookie
+                        setcookie('info', null, -1, '/');                          //Destroy cookie
                         echo '<h2>Les données ont bien été supprimées.</h2>';
                         } else {?>
                             <a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
                             <?php
-                            // if(!empty($_COOKIE['info'])){
-                            //     var_dump($_COOKIE['info']);
-                            // }
                         }
                     ?>
                 </section>
